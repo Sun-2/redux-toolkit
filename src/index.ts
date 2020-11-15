@@ -1,4 +1,4 @@
-import { enableES5 } from 'immer'
+import { enableES5, enablePatches } from 'immer'
 export * from 'redux'
 export { default as createNextState, Draft, current } from 'immer'
 export {
@@ -15,6 +15,7 @@ export { ThunkAction, ThunkDispatch } from 'redux-thunk'
 // environments.  In addition, that's how Immer 4 behaved, and since
 // we want to ship this in an RTK minor, we should keep the same behavior.
 enableES5()
+enablePatches()
 
 export {
   // js
