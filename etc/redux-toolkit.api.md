@@ -17,6 +17,7 @@ import { Middleware } from 'redux';
 import { OutputParametricSelector } from 'reselect';
 import { OutputSelector } from 'reselect';
 import { ParametricSelector } from 'reselect';
+import { PatchListener } from 'immer';
 import { Reducer } from 'redux';
 import { ReducersMapObject } from 'redux';
 import { Selector } from 'reselect';
@@ -154,7 +155,7 @@ export { createNextState }
 export function createReducer<S>(initialState: S, builderCallback: (builder: ActionReducerMapBuilder<S>) => void): Reducer<S>;
 
 // @public
-export function createReducer<S, CR extends CaseReducers<S, any> = CaseReducers<S, any>>(initialState: S, actionsMap: CR, actionMatchers?: ActionMatcherDescriptionCollection<S>, defaultCaseReducer?: CaseReducer<S>): Reducer<S>;
+export function createReducer<S, CR extends CaseReducers<S, any> = CaseReducers<S, any>>(initialState: S, actionsMap: CR, actionMatchers?: ActionMatcherDescriptionCollection<S>, defaultCaseReducer?: CaseReducer<S>, patchListener?: PatchListener): Reducer<S>;
 
 export { createSelector }
 
@@ -169,6 +170,8 @@ export interface CreateSliceOptions<State = any, CR extends SliceCaseReducers<St
     extraReducers?: CaseReducers<NoInfer<State>, any> | ((builder: ActionReducerMapBuilder<NoInfer<State>>) => void);
     initialState: State;
     name: Name;
+    // (undocumented)
+    patchListener?: PatchListener;
     reducers: ValidateSliceCaseReducers<State, CR>;
 }
 
