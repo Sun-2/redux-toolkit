@@ -110,3 +110,5 @@ export {
 export { nanoid } from './nanoid'
 
 export { default as isPlainObject } from './isPlainObject'
+
+export { ReduxDeltaListener } from './ReduxDeltaListener'
